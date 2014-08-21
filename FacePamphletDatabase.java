@@ -13,6 +13,7 @@ public class FacePamphletDatabase implements FacePamphletConstants {
 	/**
 	 * The Hashmap database
 	 */
+	// REVIEWNOTE: Try not to put the data type in the variable name.
 	private HashMap<String, FacePamphletProfile> DatabaseMap;
 	
 	/** 
@@ -21,6 +22,7 @@ public class FacePamphletDatabase implements FacePamphletConstants {
 	 * the database.
 	 */
 	public FacePamphletDatabase() {
+		// REVIEWNOTE: Why not inline this with the declaration above?
 		DatabaseMap = new HashMap<String, FacePamphletProfile>();
 	}
 	

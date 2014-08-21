@@ -65,6 +65,11 @@ public class FacePamphlet extends Program
      */
     public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
+		
+		// REVIEWNOTE: Long chains of if-then-else with code mixed in is a bad habit.
+		// This code will be hard to maintain and extend over time.
+		// 1. Investigate "design patterns" to see how to better solve the control flow structure.
+		// 2. Try to put the logic within the flow in external functions to ease maintenance and separate concerns.
 		if(cmd == "Add"){
 			String Name = NameField.getText();
 			Database.addProfile(new FacePamphletProfile(Name));

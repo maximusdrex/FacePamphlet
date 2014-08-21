@@ -25,6 +25,8 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 */
 	public FacePamphletProfile(String name) {
 		Name = name;
+		
+		// REVIEWNOTE: Why mix initialization patterns?
 		Friends = new ArrayList<String>();
 	}
 
@@ -52,6 +54,7 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 * returns the empty string ("").
 	 */ 
 	public String getStatus() {
+		// BUGBUG: This will return null, not the empty string.
 		return Status;
 	}
 	
@@ -70,6 +73,8 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 * a second time.)
 	 */
 	public boolean addFriend(String friend) {
+		// REVIEWNOTE: What if friend is null or empty?
+		// BUGBUG: Friends is a list.  If the name is already there, this will add it a second time at the end of the list.
 		return Friends.add(friend);
 	}
 
@@ -107,6 +112,8 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	public String toString() {
 		String FriendList = "";
 		Iterator<String> TheIterator = getFriends();
+		// REVIEWNOTE: There is a better way to do this without two nearly identical loops.
+		// This is a very common pattern, you should figure out how to do it better.
 		if(TheIterator.hasNext()) {
 			String NameOfFriend = TheIterator.next();
 			FriendList += NameOfFriend;

@@ -68,16 +68,21 @@ public class FacePamphletCanvas extends GCanvas
 	
 	private void addImage(FacePamphletProfile Profile, GLabel NameLabel) {
 		if(Profile.getImage() == null) {
+			// REVIEWNOTE: You are creating the picture twice.
 			NullPicture Pic = new NullPicture(200, 200);
 			add(new NullPicture(200, 200), LEFT_MARGIN, TOP_MARGIN + NameLabel.getHeight() + IMAGE_MARGIN);
 		}	else {
+			// REVIEWNOTE: You did it again ;)
 			GImage Pic = Profile.getImage();
+			// REVIEWNOTE: Why can't this add call be common with the one above?
 			add(Profile.getImage(), LEFT_MARGIN, TOP_MARGIN + NameLabel.getHeight() + IMAGE_MARGIN);
 		}
 	}
 	
 	private void showStatus(FacePamphletProfile Profile, double StatusY) {
 		GLabel Status;
+		
+		// REVIEWNOTE: Duplicate code
 		if(Profile.getStatus() == null) {
 			Status = new GLabel("No current status");
 			Status.setFont(PROFILE_STATUS_FONT);
@@ -93,6 +98,8 @@ public class FacePamphletCanvas extends GCanvas
 		GLabel FriendLabel = new GLabel("Friends:");
 		FriendLabel.setFont(PROFILE_FRIEND_LABEL_FONT);
 		add(FriendLabel, LEFT_MARGIN + IMAGE_WIDTH + 100, TOP_MARGIN);
+		
+		// REVEIWNOTE: This is a bad variable name, it looks just like the iterator
 		int Friend = 1;
 		Iterator<String> Friends = Profile.getFriends();
 		while(Friends.hasNext()) {
